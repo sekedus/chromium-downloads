@@ -26,3 +26,17 @@
 .card-header, .card-footer {
   text-align: center;
 }
+
+.bp3-html-table {
+  width: 100%;
+  margin-top: 1em;
+}
+
+.table-pagination {
+  justify-content: space-between;
+  margin-top: 1.5em;
+}
+
+.table-pagination .bp3-control-group.bp3-numeric-input {
+  margin: 0 .5em;
+}
