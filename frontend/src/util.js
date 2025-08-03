@@ -42,12 +42,16 @@ export var osInfo = {
             }
         ]
     },
+    'win_arm64': {
+        name: 'Windows (ARM64)',
+        baseDir: 'Win_Arm64'
+    },
     'win': {
         name: 'Windows (x86)',
         baseDir: 'Win'
     },
     'mac': {
-        name: 'Mac OS',
+        name: 'macOS',
         baseDir: 'Mac',
         files: [
             {
@@ -55,6 +59,10 @@ export var osInfo = {
                 filename: 'chrome-mac.zip'
             }
         ]
+    },
+    'mac_arm64': {
+        name: 'macOS (ARM64)',
+        baseDir: 'Mac_Arm'
     },
     'linux': {
         name: 'Linux',
@@ -69,5 +77,7 @@ export var osInfo = {
 }
 
 osInfo.win.files = osInfo.win64.files
+osInfo.win_arm64.files = osInfo.win64.files
+osInfo.mac_arm64.files = osInfo.mac.files
 
 export const osKeys = Object.keys(osInfo)

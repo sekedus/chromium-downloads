@@ -23,12 +23,16 @@ var osInfo = {
           }
       ]
   },
+  'win_arm64': {
+      name: 'Windows (ARM64)',
+      baseDir: 'Win_Arm64'
+  },
   'win': {
       name: 'Windows (x86)',
       baseDir: 'Win'
   },
   'mac': {
-      name: 'Mac OS',
+    name: 'macOS',
       baseDir: 'Mac',
       files: [
           {
@@ -36,6 +40,10 @@ var osInfo = {
               filename: 'chrome-mac.zip'
           }
       ]
+  },
+  'mac_arm64': {
+      name: 'macOS (ARM64)',
+      baseDir: 'Mac_Arm'
   },
   'linux': {
       name: 'Linux',
@@ -50,6 +58,8 @@ var osInfo = {
 }
 
 osInfo.win.files = osInfo.win64.files
+osInfo.win_arm64.files = osInfo.win64.files
+osInfo.mac_arm64.files = osInfo.mac.files
 
 function getStorageApiUrl(os, base) {
   return `https://www.googleapis.com/storage/v1/b/chromium-browser-snapshots/o?delimiter=/&prefix=${osInfo[os].baseDir}/${base}/&fields=items(kind,mediaLink,metadata,name,size,updated),kind,prefixes,nextPageToken`
@@ -115,8 +125,10 @@ function getDownloads(os, version) {
 }
 
 function getBuilds() {
-  return got('https://versionhistory.googleapis.com/v1/chrome/platforms/all/channels/all/versions/all/releases?filter=starttime%3E2021-01-01T00:00:00Z', { json: true })
+  return got('https://versionhistory.googleapis.com/v1/chrome/platforms/all/channels/all/versions/all/releases', { json: true })
   .then(({ body: releaseHistory}) => {
+    console.log(`Fetched ${releaseHistory.releases.length} Chromium release entries.`);
+
     return releaseHistory.releases.map(release => {
       release.timestamp = release.serving.startTime
       release.version = release.name.toString().split("/")[6]
