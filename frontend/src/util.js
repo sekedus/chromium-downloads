@@ -5,24 +5,20 @@ export const getHumanReadableSize = (size) => {
 }
 
 export const channelInfo = {
-    'canary': {
-        color: 'warning'
-    },
-    'canary_asan': {
-        color: 'warning'
+    'extended': {
+        color: 'primary'
     },
     'stable': {
         color: 'success'
     },
-    'dev': {
-        color: 'primary'
-    },
     'beta': {
+        color: 'warning'
+    },
+    'dev': {
         color: 'danger'
     },
-    'extended': {
-        color: 'danger'
-    }
+    'canary': {},
+    'canary_asan': {}
 }
 
 export const channelKeys = Object.keys(channelInfo)

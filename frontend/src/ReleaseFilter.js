@@ -29,7 +29,7 @@ export default class ReleaseFilter extends React.PureComponent {
 
     _renderPopoverContent(type, keys, displays) {
         return (
-            <ul className="bp3-menu">
+            <ul className="bp3-menu bp3-popover-custom">
                 {
                     keys.map((key, i) => {
                         const checked = this.props.filters[type].includes(key)
