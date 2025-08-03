@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tag, Breadcrumbs, H2, Card, NonIdealState, Button, Spinner, HTMLTable, HTMLSelect, NumericInput, ControlGroup, ButtonGroup } from '@blueprintjs/core';
+import { Tag, Breadcrumbs, H2, Card, Elevation, NonIdealState, Button, Spinner, HTMLTable, HTMLSelect, NumericInput, ControlGroup, ButtonGroup } from '@blueprintjs/core';
 import { Link } from 'react-router-dom'
 import { osInfo, channelInfo } from './util'
 import ReleaseFilter from './ReleaseFilter'
@@ -26,7 +26,7 @@ export default class ReleaseTable extends React.Component {
 
     render() {
         return (
-            <Card>
+            <Card elevation={Elevation.TWO}>
                 {this._render()}
             </Card>
         )

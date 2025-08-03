@@ -1,6 +1,10 @@
 @import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
 @import "~@blueprintjs/core/lib/css/blueprint.css";
 
+.bp3-dark {
+  background-color: #293742;
+}
+
 .App {
   margin-left: auto;
   margin-right: auto;
