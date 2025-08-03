@@ -10,7 +10,7 @@ Live at: https://chromium.cypress.io
 ### Installing dependencies
 
 ```
-yarn
+yarn install
 ```
 
 ### Starting the dev server
