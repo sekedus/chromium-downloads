@@ -13,28 +13,14 @@ app.use((req, res, next) => {
 });
 
 app.get("/builds", (req, res) => {
-  db.Build.findAll({
-    attributes: ["version", "os", "channel", "timestamp"],
-    order: [["timestamp", "DESC"]],
-  }).then((builds) => {
-    res.json(builds);
-  });
+  const builds = db.getBuildsSummary();
+  res.json(builds);
 });
 
 app.get("/builds/:version/:channel/:os", (req, res) => {
-  db.Build.findAll({
-    where: {
-      channel: req.params.channel,
-      os: req.params.os,
-      version: req.params.version,
-    },
-  }).then((builds) => {
-    if (!builds.length) {
-      return res.sendStatus(404);
-    }
-
-    res.json(builds[0]);
-  });
+  const build = db.getBuild(req.params.version, req.params.channel, req.params.os);
+  if (!build) return res.sendStatus(404);
+  res.json(build);
 });
 
 console.log("Initializing");

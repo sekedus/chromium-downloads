@@ -1,9 +1,9 @@
-const { Build } = require('./db')
+const { insertBuild } = require('./db')
 const { getBuilds } = require('./get-chromium-builds')
 const Promise = require('bluebird')
 
 function saveBuild(build) {
-  return Build.create(build)
+  insertBuild(build);
 }
 
 function scrape() {
@@ -22,8 +22,8 @@ function scrape() {
           return build
         })
         .then(saveBuild)
-        .catch(() => {
-          console.error(`Had an error storing downloads for Chromium ${build.version} ${build.channel} on ${build.os}`)
+        .catch((err) => {
+          console.error(`Had an error storing downloads for Chromium ${build.version} ${build.channel} on ${build.os}:`, err.message)
           return
         })
       }

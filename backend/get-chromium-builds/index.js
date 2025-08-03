@@ -1,7 +1,8 @@
 const got = require('got')
 
 // Cypress's minimum browser version is 64
-const BASES_TO_CHECK = 120
+
+const BASES_TO_CHECK = 120 // max attempts to find a valid base with files
 
 var osInfo = {
   'win64': {
